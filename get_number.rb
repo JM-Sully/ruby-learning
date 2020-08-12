@@ -40,7 +40,6 @@ until num_guesses == 10 || guessed_it
     end
 end
 
-
 #If the player ran out of turns, tell them what the number was if not guessed_it.
 unless guessed_it
     puts "Sorry, You didn't get my number. (It was #{target}."

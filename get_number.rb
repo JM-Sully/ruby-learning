@@ -5,12 +5,9 @@ puts "Welcome to 'Get My Number!'"
 print "What's your name? "
 
 input = gets
+name = input.chomp
 
-puts "Welcome, #{input}!"
+puts "Welcome, #{name}!"
 
-puts input
-p input
 
-#practice!!
 
-#still practicing

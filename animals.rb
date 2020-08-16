@@ -19,7 +19,7 @@ class Bird
     def report_age
         puts "#{@name} is #{@age} years old."
     end
-    
+
 end
 
 class Dog 
@@ -86,5 +86,3 @@ benji.age = 16
 
 puts cody.report_age
 puts benji.report_age
-
-

@@ -16,22 +16,27 @@ class Employee
         @salary = salary
     end
 
-    def print_pay_stub
-        puts "Name : #{@name}" 
-        pay_for_period = (@salary / 365) * 14
-        puts "Pay This Period $#{pay_for_period}."
+    def initialize(name = "Anonymous", salary = 0.0)
+        @name = name
+        @salary = salary
     end
 
-    def print_pay_snub
-        puts "Name : #{@name}" 
-        pay_for_period = (@salary / 365) * 14
-        puts "Pay This Period $#{pay_for_period}."
+    def print_pay_stub
+        puts "Name: #{@name}" 
+        pay_for_period = (@salary / 365.0) * 14
+        formatted_pay = format("%.2f", pay_for_period)
+        puts "Pay This Period $#{formatted_pay}."
     end
 
 end
 
+=begin
 amy = Employee.new
-puts "\n"
 amy.name = "Amy"
-amy.salary = 1020293
+amy.salary = 50000
 amy.print_pay_stub
+=end
+
+employee = Employee.new("Amy", 50000).print_pay_stub
+employee = Employee.new("Amy").print_pay_stub
+employee = Employee.new.print_pay_stub

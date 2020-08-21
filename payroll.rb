@@ -13,9 +13,8 @@ class Employee
         puts "Name: #{name}" 
     end
 
-    def initialize(name = "Anonymous", salary = 0.0)
+    def initialize(name = "Anonymous")
         self.name = name
-        self.salary = salary
     end
 
 end
@@ -23,6 +22,11 @@ end
 class SalariedEmployee < Employee
 
     attr_reader :salary
+
+    def initialize(name = "Anonymous", salary = 0.0)
+        super(name)
+        self.salary = salary
+    end
 
     def salary=(salary)
         if salary < 0
@@ -43,6 +47,12 @@ end
 class HourlyEmployee < Employee
 
     attr_reader :hourly_wage, :hours_per_week
+
+    def initialize(name = "Anonymous", hourly_wage = 0, hours_per_week = 0)
+        super(name)
+        self.hourly_wage = hourly_wage
+        self.hours_per_week = hours_per_week
+    end
 
     def hourly_wage=(hourly_wage)
         if hourly_wage < 0
@@ -67,13 +77,8 @@ class HourlyEmployee < Employee
 
 end
 
-salaried_employee = SalariedEmployee.new
-salaried_employee.name = "Jane"
-salaried_employee.salary = 50000
+salaried_employee = SalariedEmployee.new("Jane", 50000)
 salaried_employee.print_pay_stub
 
-hourly_employee = HourlyEmployee.new
-hourly_employee.name = "Joe"
-hourly_employee.hourly_wage = 15
-hourly_employee.hours_per_week = 30
+hourly_employee = HourlyEmployee.new("Joe", 15, 30)
 hourly_employee.print_pay_stub

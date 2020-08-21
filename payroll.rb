@@ -4,39 +4,76 @@ class Employee
 
     def name=(name)
         if name == ""
-            raise "Name can't be blank." #Use raise instead of puts so it reports an error
+            raise "Name can't be blank."
         end
         @name=name
     end
 
-    def salary=(salary)
-        if salary < 0
-            raise "A salary of #{@salary} isn't valid."
-        end
-        @salary = salary
+    def print_name
+        puts "Name: #{name}" 
     end
 
     def initialize(name = "Anonymous", salary = 0.0)
-        @name = name
-        @salary = salary
-    end
-
-    def print_pay_stub
-        puts "Name: #{@name}" 
-        pay_for_period = (@salary / 365.0) * 14
-        formatted_pay = format("%.2f", pay_for_period)
-        puts "Pay This Period $#{formatted_pay}."
+        self.name = name
+        self.salary = salary
     end
 
 end
 
-=begin
-amy = Employee.new
-amy.name = "Amy"
-amy.salary = 50000
-amy.print_pay_stub
-=end
+class SalariedEmployee < Employee
 
-employee = Employee.new("Amy", 50000).print_pay_stub
-employee = Employee.new("Amy").print_pay_stub
-employee = Employee.new.print_pay_stub
+    attr_reader :salary
+
+    def salary=(salary)
+        if salary < 0
+            raise "A salary of #{salary} isn't valid."
+        end
+        @salary = salary
+    end
+
+    def print_pay_stub
+        print_name
+        pay_for_period = (salary / 365.0) * 14
+        formatted_pay = format("%.2f", pay_for_period)
+        puts "Pay This Period: $#{formatted_pay}."
+    end
+
+end
+
+class HourlyEmployee < Employee
+
+    attr_reader :hourly_wage, :hours_per_week
+
+    def hourly_wage=(hourly_wage)
+        if hourly_wage < 0
+            raise "An hourly wage of #{hourly_wage} isn't valid."
+        end
+        @hourly_wage = hourly_wage
+    end
+
+    def hours_per_week=(hours_per_week)
+        if hours_per_week < 0
+            raise "Hours of #{hours_per_week} aren't valid."
+        end
+        @hours_per_week = hours_per_week
+    end
+
+    def print_pay_stub
+        print_name
+        pay_for_period = hourly_wage * hours_per_week * 2
+        formatted_pay = format("%.2f", pay_for_period)
+        puts "Pay This Period: $#{formatted_pay}."
+    end
+
+end
+
+salaried_employee = SalariedEmployee.new
+salaried_employee.name = "Jane"
+salaried_employee.salary = 50000
+salaried_employee.print_pay_stub
+
+hourly_employee = HourlyEmployee.new
+hourly_employee.name = "Joe"
+hourly_employee.hourly_wage = 15
+hourly_employee.hours_per_week = 30
+hourly_employee.print_pay_stub

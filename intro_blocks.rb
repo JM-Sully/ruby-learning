@@ -1,6 +1,6 @@
-def my_method(&my_block)
+def my_method
     puts "We're in the method, about to invoke your block!"
-    my_block.call
+    yield
     puts "We're back in the method!"
 end
 
@@ -8,10 +8,10 @@ my_method do
     puts "We're in the block."
 end
 
-puts my_method(my_block)
+puts my_method
 
-def give(&my_block)
-    my_block.call("2 bananas", "1 apple")
+def give
+    yield "2 bananas", "1 apple"
 end
 
 give do |present1, present2|
@@ -19,4 +19,4 @@ give do |present1, present2|
     puts present1, present2
 end
 
-puts give(&my_block)
+puts give

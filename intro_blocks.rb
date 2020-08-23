@@ -8,8 +8,6 @@ my_method do
     puts "We're in the block."
 end
 
-puts my_method
-
 def give
     yield "2 bananas", "1 apple"
 end
@@ -19,4 +17,19 @@ give do |present1, present2|
     puts present1, present2
 end
 
-puts give
+
+def run_block
+    yield
+end
+
+run_block { puts "Using curly braces"}
+
+puts run_block
+
+def block_param
+    yield "2 bananas"
+end
+
+block_param { |param| puts "I would like #{param}."}
+
+puts block_param

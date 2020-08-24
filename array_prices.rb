@@ -1,37 +1,24 @@
-prices = [3.99, 25.00, 8.99]
-
-
 def total(prices)
     amount = 0
-    index = 0
-        while index < prices.length
-            amount += prices[index]
-            index += 1
-        end
+    prices.each { |price| amount += price}
     amount
 end
-
-puts format("$%.2f", total(prices))
 
 def refund(prices)
     amount = 0
-    index = 0
-        while index < prices.length
-            amount -= prices[index]
-            index += 1
-        end
+    prices.each { |prices| amount -= prices}
     amount
 end
 
-puts format("$%.2f", refund(prices))
-
 def show_discounts(prices)
-    index = 0
-    while index < prices.length
-        amount_off = prices[index] / 3.0
+    prices.each do |prices|
+        amount_off = prices / 3.0
         puts format("Your discount is $%.2f", amount_off)
-        index += 1
     end
 end
 
+prices = [3.99, 25.00, 8.99]
+
+puts format("$%.2f", total(prices))
+puts format("$%.2f", refund(prices))
 puts show_discounts(prices)

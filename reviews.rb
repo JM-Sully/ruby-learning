@@ -5,14 +5,19 @@ File.open("reviews.txt") do |review_file|
 end
 
 relevant_lines = []
+relevant_lines = lines.find_all { |line| line.include?("Truncated") }
+reviews = relevant_lines.reject { |line| line.include?("--")}
 
-lines.each do |line|
-    if line.include?("Truncated")
-        relevant_lines << line
-    end
+def find_adjective(string)
+    words = string.split(" ")
+    index = words.find_index("is")
+    words[index + 1]
 end
 
-# using the find_all method is much more DRY
-relevant_lines = lines.find_all { |line| line/include?("Truncated")}
+adjectives = []
 
-puts relevant_lines
+reviews.each do |review|
+    adjectives << find_adjective(review)
+end
+
+puts adjectives

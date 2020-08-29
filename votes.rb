@@ -3,15 +3,14 @@ File.open("votes.txt") do |read_votes|
     lines = read_votes.readlines
 end
 
-votes = {} #creates an empty hash
+votes = Hash.new(0) # creates a new hash with a default value of o
 
 lines.each do |line|
     name = line.chomp
-    if votes[name] #don't need to add '!= nil' If the vote name exists, add 1
-        votes[name] += 1
-    else #if the vote name doesn't exist, at the vote name as a key and assign it a value of one
-        votes[name] = 1
-    end
+    name.upcase! # normalizes the names, changes them to be in ALL CAPS
+    votes[name] += 1 # increment whatever value is returned
 end
 
-p votes
+votes.each do |name, count|
+    puts "#{name}: #{count}"
+end

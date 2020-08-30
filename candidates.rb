@@ -17,5 +17,5 @@ def print_summary(candidate)
     puts "Birthplace: #{candidate.birthplace}"
 end
 
-candidate = Candidate.new("Cody Bear", {:age => 8, :occupation => "Herder", :birthplace => "Kazabazua"})
+candidate = Candidate.new("Cody Bear", age: 8, occupation: "Herder", birthplace: "Kazabazua")
 print_summary(candidate)

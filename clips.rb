@@ -1,14 +1,13 @@
-class Clip
-
-    attr_reader :comments
-
-    def initialize
-        @commments = []
+module AcceptsComments
+    def comments
+        @comments ||= []
     end
-
     def add_comment(comment)
-        @commments << comment
+        comments << comment
     end
+end
+
+class Clip
 
     def play
         puts "Playing #{object_id}."
@@ -17,11 +16,20 @@ class Clip
 end
 
 class Video < Clip
+    include AcceptsComments
     attr_accessor :resolution
 end
 
 class Song < Clip
+    include AcceptsComments
     attr_accessor :bpm
+end
+
+class Photo
+    include AcceptsComments
+    def show
+        puts "Displaying #{object_id}"
+    end
 end
 
 video = Video.new
@@ -29,5 +37,8 @@ video.add_comment("Cool slo-mo")
 video.add_comment("Odd ending")
 song = Song.new
 song.add_comment("Sweet beats")
+photo = Photo.new
+photo.add_comment("Nice pic")
 
-p video.comments, song.comments
+puts video.comments, song.comments, photo.comments
+p video.play, song.play, photo.show

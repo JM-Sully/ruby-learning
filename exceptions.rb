@@ -13,20 +13,22 @@ class SmallOven
 
     def bake
         unless @state == "on"
-            puts "You need to turn on the oven"
+            raise "You need to turn on the oven!"
         end
-        if @contents = nil
-            puts "You need to put something in the oven"
+        if @contents == nil
+            raise "You need to put something in the oven!"
         end
         "golden-brown #{contents}."
     end
 
 end
 
-dinner = ['turkey', nil, 'pie']
+#dinner = ['turkey', nil, 'pie']
 oven = SmallOven.new
 oven.turn_on
-dinner.each do |item|
-    oven.contents = item
-    puts "Serving #{oven.bake}."
-end
+oven.contents = nil
+puts "Serving #{oven.bake}."
+#dinner.each do |item|
+ #   oven.contents = item
+  #  puts "Serving #{oven.bake}."
+#end

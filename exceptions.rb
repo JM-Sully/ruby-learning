@@ -23,12 +23,15 @@ class SmallOven
 
 end
 
-#dinner = ['turkey', nil, 'pie']
+dinner = ['turkey', nil, 'pie']
 oven = SmallOven.new
 oven.turn_on
-oven.contents = nil
-puts "Serving #{oven.bake}."
-#dinner.each do |item|
- #   oven.contents = item
-  #  puts "Serving #{oven.bake}."
-#end
+dinner.each do |item|
+    begin
+    oven.contents = item
+    puts "Serving #{oven.bake}."
+    #the rescue allows the code to continue running once the error has been dealt with.
+    rescue
+        puts "Error: there's nothing in the oven"
+    end
+end

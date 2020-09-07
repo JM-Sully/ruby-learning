@@ -25,13 +25,13 @@ end
 
 dinner = ['turkey', nil, 'pie']
 oven = SmallOven.new
-oven.turn_on
+oven.turn_off
 dinner.each do |item|
     begin
     oven.contents = item
     puts "Serving #{oven.bake}."
     #the rescue allows the code to continue running once the error has been dealt with.
-    rescue
-        puts "Error: there's nothing in the oven"
+    rescue => error #gets the message from the the "raise"
+        puts "Error: #{error.message}"
     end
 end

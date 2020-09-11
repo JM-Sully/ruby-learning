@@ -2,9 +2,17 @@ require 'minitest/autorun'
 require 'list_with_commas'
 
 class TestListWithCommas < Minitest::Test
-    def two_word_list
+    
+    def test_it_joins_two_words_with_and
         list = ListWithCommas.new
         list.items = ['Cody', 'Jess']
-        assert(list.join == 'Cody and Jess')
+        assert('Cody and Jess.' == list.join)
     end
+
+    def test_it_joins_three_words_with_commas
+        list = ListWithCommas.new
+        list.items = ['Cody', 'Ady', 'Jess']
+        assert('Cody, Ady, and Jess.' == list.join)
+    end
+
 end

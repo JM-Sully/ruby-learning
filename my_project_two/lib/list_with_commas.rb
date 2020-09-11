@@ -6,3 +6,7 @@ class ListWithCommas
         "#{other_items}, #{last_item}."
     end
 end
+
+list = ListWithCommas.new
+list.items = ['Cody', 'Jess']
+puts list.join

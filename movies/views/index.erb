@@ -7,9 +7,12 @@
     <body style="background-color:teal;">
         <h1>My Movies</h1>
         <ul>
-            <li>movies</li>
-            <li>go</li>
-            <li>here</li>
+            <li><%= @movie.title %></li>
+            <li><%= 15.0 / 6.0 %></li>
+            <li><%= Time.now %></li>
+            <% [1,2,3].each do |number| %>
+                <li><%= number %></li>
+            <% end %>    
         </ul>
         <a href="/movies/new">Add New Movie</a>
     </body>

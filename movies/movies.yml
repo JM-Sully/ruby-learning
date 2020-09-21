@@ -9,3 +9,8 @@
   director: George Lucas
   year: '1977'
   id: 2
+3: !ruby/object:Movie
+  title: Attack the Block
+  director: Joe Cornish
+  year: '2008'
+  id: 3

@@ -1,9 +1,0 @@
----
-Cody: !ruby/object:Movie
-  title: Cody
-  director: Ady
-  year: 2020
-Advenure: !ruby/object:Movie
-  title: Adventure
-  director: Ady
-  year: 2020
